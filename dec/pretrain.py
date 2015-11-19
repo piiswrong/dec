@@ -72,7 +72,7 @@ snapshot: 10000
 snapshot_prefix: "exp/{4}/save"
 snapshot_after_train:true
 solver_mode: GPU
-debug_info: true
+debug_info: false 
 device_id: 0""".format(rate, params['step'][0], niter, params['decay'][0],db ))
 
     
@@ -138,7 +138,7 @@ snapshot: 10000
 snapshot_prefix: "exp/{4}/save"
 snapshot_after_train:true
 solver_mode: GPU
-debug_info: true
+debug_info: false 
 device_id: 0""".format(rate, params['step'][0], params['pt_iter'][0], params['decay'][0], db))
 
         if i > 0:
@@ -160,7 +160,6 @@ device_id: 0""".format(rate, params['step'][0], params['pt_iter'][0], params['de
         del net
 
     net = caffe.Net('pt_net.prototxt', 'exp/'+db+'/save_iter_%d.caffemodel'%params['pt_iter'][0])
-    print net.params.keys()
     for i in xrange(n_layer):
         if i == 0:
             k = 'd_data'
@@ -176,10 +175,11 @@ device_id: 0""".format(rate, params['step'][0], params['pt_iter'][0], params['de
 
 if __name__ == '__main__':
     db = 'mnist'
+    input_dim = 784
     #dec.make_mnist_data()
-    print main(db, {'n_layer':[4], 'dim': [784, 500, 500, 2000, 10],
+    print main(db, {'n_layer':[4], 'dim': [input_dim, 500, 500, 2000, 10],
                'drop': [0.0], 'rate': [0.1], 'step': [20000], 'iter':[100000], 'decay': [0.0000]})
-    print pretrain_main(db, {'dim': [784, 500, 500, 2000, 10], 'pt_iter': [50000],
+    print pretrain_main(db, {'dim': [input_dim, 500, 500, 2000, 10], 'pt_iter': [50000],
               'drop': [0.2], 'rate': [0.1], 'step': [20000], 'iter':[100000], 'decay': [0.0000]})
     os.system("caffe train --solver=ft_solver.prototxt --weights=stack_init_final.caffemodel") 
 

@@ -327,7 +327,6 @@ layers {{
 
     fnet.write('name: "net"\n')
     for k,v in layers:
-        print k,v
         fnet.write(layer_dict[k].format(*v))
     fnet.close()
 
@@ -748,14 +747,16 @@ device_id: 0"""%update_interval)
 
 if __name__ == '__main__':
     db = sys.argv[1]
+    lam = 160
     """acc_list = []
     nmi_list = []
     for i in xrange(0,9):
-      acc, nmi = DisKmeans(db, 10*(2**i))
+      lam = 10*(2**i)
+      acc, nmi = DisKmeans(db, lam)
       acc_list.append(acc)
       nmi_list.append(nmi)
     print acc_list
     print nmi_list"""
-    DisKmeans(db, 20)
+    DisKmeans(db, lam)
     
     
