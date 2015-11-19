@@ -435,14 +435,7 @@ def make_reuters_data():
   X = CountVectorizer(dtype=np.float64, max_features=2000).fit_transform(data)
   Y = np.asarray(target)
 
-  np.savez('reuters_wordcount.npy', X, Y)
-
-
-def make_reuters_idf_data():
   from sklearn.feature_extraction.text import TfidfTransformer
-  data = np.load('reuters_wordcount.npy.npz')
-  X = data['arr_0'].tolist()
-  Y = data['arr_1']
   X = TfidfTransformer(norm='l2', sublinear_tf=True).fit_transform(X)
   X = np.asarray(X.todense())*np.sqrt(X.shape[1])
 
