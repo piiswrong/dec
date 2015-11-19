@@ -747,7 +747,14 @@ device_id: 0"""%update_interval)
 
 if __name__ == '__main__':
     db = sys.argv[1]
-    lam = 160
+    if db == 'mnist':
+        lam = 160
+    elif db == 'stl':
+        lam = 40
+    elif db == 'reutersidf' or db == 'reutersidf10k':
+        lam = 20
+    else:
+        lam = int(sys.argv[2])
     """acc_list = []
     nmi_list = []
     for i in xrange(0,9):
