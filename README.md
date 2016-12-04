@@ -10,3 +10,8 @@ To run, please first build our custom version of Caffe included in this package 
 Then download the data set you want to experiment on. We provide scripts for downloading the datasets used in the paper. For example you can download MNIST by `cd mnist; ./get_data.sh`. Once download completes, run `cd dec; python make_mnist_data.py` to prepare data for Caffe.
 
 After data is ready, run `python dec.py DB` to run experiment on with DB. DB can be one of mnist, stl, reutersidf10k, reutersidf. We provide pretrained autoencoder weights with this package. You can use dec/pretrain.py to train your own autoencoder. Please read source for usage info.
+
+### Docker
+
+A Dockerfile has been provided to create a sterile development environment easily.  To build the environment, run `docker build --rm -t dec .` and then `docker run --rm -it dec bash` to shell into the running container.  Alternatively, [nvidia-docker](https://github.com/NVIDIA/nvidia-docker) can be used to enable GPU capability.
+
