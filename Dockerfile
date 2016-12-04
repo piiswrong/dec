@@ -18,6 +18,7 @@ RUN pip install -U leveldb  # fix GH Issue #7
 # Copy the source files over and build the project
 
 COPY . /usr/local/src/dec
+WORKDIR /usr/local/src/dec
 
 RUN cd /usr/local/src/dec/caffe && \
     cp Makefile.config.example Makefile.config && \
