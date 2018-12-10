@@ -2,7 +2,7 @@
 
 This package implements the algorithm described in paper "Unsupervised Deep Embedding for Clustering Analysis". It depends on opencv, numpy, scipy and Caffe.
 
-This implementation is intended for reproducing the results in the paper. If you only want to try the algorithm and find caffe too difficault to install, there is an easier to use experimental implementation in MXNet: https://github.com/dmlc/mxnet/blob/master/example/dec/dec.py, but note that results can be different from the paper. MXNet is a flexible deep learning library with fewer dependencies. You are welcome to try it. Installation guide can be found here: https://mxnet.readthedocs.org/en/latest/build.html. Once you install MXNet, simple go into directory examples/dec and run `python dec.py`.
+This implementation is intended for reproducing the results in the paper. If you only want to try the algorithm and find caffe too difficault to install, there is an easier to use experimental implementation in MXNet: https://github.com/apache/incubator-mxnet/blob/master/example/deep-embedded-clustering/dec.py, but note that results can be different from the paper. MXNet is a flexible deep learning library with fewer dependencies. You are welcome to try it. Installation guide can be found here: https://mxnet.readthedocs.org/en/latest/build.html. Once you install MXNet, simple go into directory examples/dec and run `python dec.py`.
 
 ## Usage
 To run, please first build our custom version of Caffe included in this package following the official guide: http://caffe.berkeleyvision.org/installation.html. 
